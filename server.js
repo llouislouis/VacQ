@@ -10,14 +10,16 @@ connectDB();
 
 //Route files
 const hospitals = require('./routes/hospitals');
+const auth = require('./routes/auth');
 
 const app=express();
 
-//Body parser
-app.use(express.json());
+app.use('/api/v1/hospitals',hospitals);
+app.use('/api/v1/auth',auth);
+
 
 //Body parser
-app.use('/api/v1/hospitals',hospitals);
+app.use(express.json());
 
 const PORT=process.env.PORT || 5000;
 
