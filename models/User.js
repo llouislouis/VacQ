@@ -15,14 +15,14 @@ const UserSchema =new mongoose.Schema({
    
      role:{
         type:String,
-
+        enum:['user','admin'],
         default: 'user'
     },
     
     password: {
         type:String,
         required:[true,'please add a password'],
-        minlegth: 6,
+        minlength: 6,
         select: false
     },
     resetPasswordToken: String,
@@ -52,4 +52,4 @@ UserSchema.methods.getSignedJwtToken=function(){
   }
   
   module.exports = mongoose.model("User", UserSchema);
-  
+ 
