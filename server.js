@@ -11,19 +11,23 @@ connectDB();
 
 const app=express();
 
-//Route files
-const hospitals = require('./routes/hospitals');
-const auth = require('./routes/auth');
-
+//Cookie Parser
+app.use(cookieParser());
 
 //Body parser
 app.use(express.json());
-//Cookie Parser
-app.use(cookieParser());
+
+
+//Route files
+const hospitals = require('./routes/hospitals');
+const auth = require('./routes/auth');
+const appointments=require('./routes/appointments');
+
 
 //Mount routers
 app.use('/api/v1/hospitals',hospitals);
 app.use('/api/v1/auth',auth);
+app.use('/api/v1/appointments', appointments);
 
 
 
